@@ -119,4 +119,10 @@ app.use(function(req, res, next) {
     res.status(404).render('404');
 });
 
-module.exports = app
+const server = app.listen(3030, function(err) {
+    if (err) {
+        console.log(err)
+    } else {
+        console.log("Running Server on Port 3030.")
+    }
+})
