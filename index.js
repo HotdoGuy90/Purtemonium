@@ -119,7 +119,7 @@ app.use(function(req, res, next) {
     res.status(404).render('404');
 });
 
-const server = app.listen(3030, function(err) {
+app.listen(3030, function(err) {
     if (err) {
         console.log(err)
     } else {
