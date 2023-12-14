@@ -11,7 +11,7 @@
   "name": "purtemonium",
   "version": "1.0.0",
   "description": "The Ruthless Social Media Platform",
-  "main": "./app/server.js",
+  "main": "./app/index.js",
   "homepage": "https://hotdoguy90.github.io/purtemonium",
   "scripts": {
     "test": "echo \"Hello World!\"",
