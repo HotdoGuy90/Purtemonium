@@ -13,7 +13,6 @@
   "description": "The Ruthless Social Media Platform",
   "main": "./server.js",
   "homepage": "https://hotdoguy90.github.io/purtemonium",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Hello World!\"",
     "dev": "next dev",
