@@ -11,7 +11,7 @@
   "homepage": "https://hotdoguy90.github.io/purtemonium",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Shut up\" && exit 1"
+    "test": "node server.js"
   },
   "repository": {
     "type": "git",
