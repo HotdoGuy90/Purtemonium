@@ -11,11 +11,11 @@
   "name": "purtemonium",
   "version": "1.0.0",
   "description": "The Ruthless Social Media Platform",
-  "main": "./app/index.js",
+  "main": "index.js",
   "homepage": "https://hotdoguy90.github.io/purtemonium",
   "scripts": {
     "test": "echo \"Hello World!\"",
-    "start": "node index.js"
+    "start": "node test.js"
   },
   "repository": {
     "type": "git",
