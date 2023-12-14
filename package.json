@@ -17,7 +17,7 @@
     "test": "echo \"Hello World!\"",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "node /app/index.js"
   },
   "repository": {
     "type": "git",
