@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purtemonium - New Post</title>
+</head>
+<body>
+    <form onsubmit="main()" action="/createPost" method="post">
+
+        <label for="title">Title: </label>
+        <input type="text" name="title" id="title" placeholder="Please Enter a Title">
+
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" placeholder="Please Enter a Username">
+
+        <label for="paragraph">Body: </label>
+        <input type="text" name="paragraph" id="paragraph" placeholder="Please Enter Your Post">
+
+        <input type="submit" value="Post">
+    </form>
+
+    <script>
+        function main() {
+            window.alert("Your post is up.");
+        }
+    </script>
+</body>
+</html>

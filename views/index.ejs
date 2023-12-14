@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purtemonium</title>
+</head>
+<body>
+    <h1>Welcome to Purtemonium!</h1>
+    <p>The Rules are simple: </p>
+    <ol>
+        <li>You are anonymous and don't need an account</li>
+        <li>All posts will be gone within 1 week of them being posted</li>
+        <li>Any User can edit, change, or delete your posts to their liking. (vice versa as well)</li>
+        <li>Follow the <a href="./posting-rules">Posting Rules</a> at all times.</li>
+    </ol>
+
+    <a href="./new"><button>Create A Post</button></a>
+
+    <p>This week's posts are: </p>
+    <% if (posts.length === 0) { %>
+        <span>nothin yet...try reloading. (or just post something)</span>
+    <% } else { %>
+        <% for (var i = 0;i < posts.length; i++)  {%>
+            <h2><%= posts[i].title %></h2>
+            <h3>By: <%= posts[i].username %></h3>
+            <p><%= posts[i].paragraph %></p>
+            <button onclick="deletePost(<%= i %>)">Delete Post</button>
+            <a href="./edit?id=<%= i %>"><button>Edit Post</button></a>
+        <% } %>
+    <% } %>
+    <script>
+
+        function deletePost(id) {
+            fetch('/deletePost', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: id }),
+            });
+            window.alert("It has been deleted.");
+            document.location.reload();
+        }
+    </script>
+</body>
+</html>

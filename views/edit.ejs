@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purtemonium</title>
+</head>
+<body>
+    <form action="/editPost" method="post">
+
+        <label for="title">Title: </label>
+        <input type="text" name="title" id="title" placeholder="Please Enter a Title">
+
+        <label for="paragraph">Body: </label>
+        <input type="text" name="paragraph" id="paragraph" placeholder="Please Enter Your Post">
+
+        <input hidden name="id" type="number" id="id">
+
+        <input type="submit" value="Update">
+    </form>
+
+    
+
+    <script>
+        var params = new URLSearchParams(document.location.search);
+        var id = params.get("id");
+        var title = document.getElementById("title");
+        var body = document.getElementById("paragraph");
+        var ider = document.getElementById("id");
+
+        ider.value = id;
+
+        fetch('/getIdInfo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: id }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                title.value = data.title;
+                body.value = data.paragraph;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
