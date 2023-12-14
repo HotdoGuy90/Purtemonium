@@ -5,6 +5,9 @@
     "express": "^4.18.2",
     "next": "^14.0.4"
   },
+  "devDependencies": {
+    "next": "^14.0.4"
+  },
   "name": "purtemonium",
   "version": "1.0.0",
   "description": "The Ruthless Social Media Platform",
