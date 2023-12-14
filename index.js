@@ -119,7 +119,7 @@ app.use(function(req, res, next) {
     res.status(404).render('404');
 });
 
-app.listen(3030, function(err) {
+app.listen(8080 || process.env.PORT, function(err) {
     if (err) {
         console.log(err)
     } else {
