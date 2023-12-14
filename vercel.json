@@ -11,16 +11,5 @@
             "src": "/(.*)",
             "dest": "index.js"
         }
-    ],
-    "headers": [
-        {
-            "source": "./index.js",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "s-maxage=1, state-while-revalidate=59"
-                }
-            ]
-        }
     ]
 }
