@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "name": "purtemonium",
+  "version": "1.0.0",
+  "description": "The Ruthless Social Media Platform",
+  "main": "./server.js",
+  "homepage": "https://hotdoguy90.github.io/purtemonium",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Shut up\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com"
+  },
+  "keywords": [
+    "Social",
+    "Media",
+    "Social",
+    "Media",
+    "Purtemonium",
+    "4Chan",
+    "Purtemonium",
+    "Media"
+  ],
+  "author": "HotdoGuy90",
+  "license": "MIT"
+}
