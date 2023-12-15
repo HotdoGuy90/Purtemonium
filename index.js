@@ -60,9 +60,7 @@ app.post('/createPost', function(req, res) {
             }
         });
     });
-    res.status(200).send(JSON.stringify(data));
-
-    res.redirect('../')
+    res.status(200).redirect('../');
     
 });
 
