@@ -60,10 +60,9 @@ app.post('/createPost', function(req, res) {
             }
         });
     });
+    res.sendStatus(200);
 
     res.redirect('../')
-
-    res.status(200).send("OK");
     
 });
 
@@ -111,7 +110,7 @@ app.post('/deletePost', function(req, res) {
         });
     });
 
-    res.status(200).send("OK");
+    res.sendStatus(200);
 });
 
 app.post('/getIdInfo', function(req, res) {
