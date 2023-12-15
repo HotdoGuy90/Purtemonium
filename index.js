@@ -3,28 +3,33 @@ var http = require('http');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+const path = require('path');
 
-app.use(bodyParser.urlencoded({ extended: true}));
-
-app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', function(req, res) {
-    fs.readFile('./data.json', function(err, data) {
-        res.render('index', JSON.parse(data));
-    })
+    res.sendFile("./views/index.html");
 });
 
 app.get('/posting-rules', function(req, res) {
-    res.render('posting-rules')
+    res.sendFile("./views/posting-rules.html");
 });
 
 app.get('/new', function(req, res) {
-    res.render('new');
-})
+    res.sendFile('./views/new.html');
+});
 
 app.get('/edit', function(req, res) {
-    res.render('edit');
-})
+    res.sendFile('./views/edit.html');
+});
+
+app.get('/getPosts', function(req, res){
+    fs.readFile('./data.json', function(err, data) {
+        res.send(data);
+    });
+});
+
+app.use(bodyParser.urlencoded({ extended: true}));
 
 app.post('/createPost', function(req, res) {
     var poster = req.body.username;
@@ -116,7 +121,7 @@ app.post('/getIdInfo', function(req, res) {
 });
 
 app.use(function(req, res, next) {
-    res.status(404).render('404');
+    res.status(404).sendFile("./views/404.html");
 });
 
 app.listen(8080 || process.env.PORT, function(err) {

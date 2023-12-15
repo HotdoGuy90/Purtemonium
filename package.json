@@ -15,7 +15,7 @@
   "homepage": "https://hotdoguy90.github.io/purtemonium",
   "scripts": {
     "test": "echo \"Hello World!\"",
-    "start": "node test.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

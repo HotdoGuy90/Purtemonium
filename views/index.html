@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purtemonium</title>
+</head>
+<body>
+    <h1>Welcome to Purtemonium!</h1>
+    <p>The Rules are simple: </p>
+    <ol>
+        <li>You are anonymous and don't need an account</li>
+        <li>All posts will be gone within 1 week of them being posted</li>
+        <li>Any User can edit, change, or delete your posts to their liking. (vice versa as well)</li>
+        <li>Follow the <a href="./posting-rules">Posting Rules</a> at all times.</li>
+    </ol>
+
+    <a href="./new"><button>Create A Post</button></a>
+
+    <p>This week's posts are: </p>
+    <article id="posts"></article>
+    <script>
+        fetch('/getPosts')
+            .then(res => res.json())
+            .then(data => {
+                var article = document.getElemntById("posts");
+                for (var i=0;i<data.posts.length;i++) {
+                    var title = document.createElement("h2");
+                    title.innerHTML = data.posts[i].title;
+
+                    var author = document.createElement("h3");
+                    author.innerHTML = "Posted By: " + data.posts[i].author;
+
+                    var paragraph = document.createElement("p");
+                    paragraph.innerHTML = data.posts[i].paragraph;
+
+                    var postDelete = document.createElement("button");
+                    postDelete.innerHTML = "Delete Post";
+                    postDelete.onclick = () => {
+                        deletePost(i);
+                    }
+
+                    var postEdit = document.createElement("a");
+                    var postEditDisplay = document.createElement("button");
+                    postEdit.href = "./new";
+                    postEditDisplay.innerHTML = "Edit Post";
+                    postEdit.appendChild(postEditDisplay);
+                    
+                    var container = document.createElement("div");
+                    container.classList.add("container");
+                    container.appendChild(title);
+                    container.appendChild(author);
+                    container.appendChild(paragraph);
+                    container.appendChild(postDelete);
+                    container.appendChild(postEdit);
+
+                    article.appendChild(container);
+                }
+            })
+            .catch(err => {
+                console.error(err.stack);
+            });
+
+        function deletePost(id) {
+            fetch('/deletePost', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: id }),
+            });
+            window.alert("It has been deleted.");
+            document.location.reload();
+        }
+    </script>
+</body>
+</html>
