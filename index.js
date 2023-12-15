@@ -120,7 +120,7 @@ app.post('/getIdInfo', function(req, res) {
 });
 
 app.use(function(req, res, next) {
-    res.status(404).sendFile("./views/404.html", options);
+    res.status(404).sendFile("./404.html", options);
 });
 
 app.listen(8080 || process.env.PORT, function(err) {
