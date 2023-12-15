@@ -23,7 +23,7 @@
         fetch('/getPosts')
             .then(res => res.json())
             .then(data => {
-                var article = document.getElemntById("posts");
+                var article = document.getElementById("posts");
                 for (var i=0;i<data.posts.length;i++) {
                     var title = document.createElement("h2");
                     title.innerHTML = data.posts[i].title;
@@ -37,12 +37,12 @@
                     var postDelete = document.createElement("button");
                     postDelete.innerHTML = "Delete Post";
                     postDelete.onclick = () => {
-                        deletePost(i);
+                        deletePost(i-1);
                     }
 
                     var postEdit = document.createElement("a");
                     var postEditDisplay = document.createElement("button");
-                    postEdit.href = "./new";
+                    postEdit.href = `./edit?id=${i}`;
                     postEditDisplay.innerHTML = "Edit Post";
                     postEdit.appendChild(postEditDisplay);
                     

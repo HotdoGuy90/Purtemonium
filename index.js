@@ -5,22 +5,26 @@ var app = express();
 var bodyParser = require('body-parser');
 const path = require('path');
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
+
+const options = {
+    root: path.join(__dirname)
+}
 
 app.get('/', function(req, res) {
-    res.sendFile("./views/index.html");
+    res.sendFile("./views/index.html", options);
 });
 
 app.get('/posting-rules', function(req, res) {
-    res.sendFile("./views/posting-rules.html");
+    res.sendFile("./views/posting-rules.html", options);
 });
 
 app.get('/new', function(req, res) {
-    res.sendFile('./views/new.html');
+    res.sendFile('./views/new.html', options);
 });
 
 app.get('/edit', function(req, res) {
-    res.sendFile('./views/edit.html');
+    res.sendFile('./views/edit.html', options);
 });
 
 app.get('/getPosts', function(req, res){
@@ -121,7 +125,7 @@ app.post('/getIdInfo', function(req, res) {
 });
 
 app.use(function(req, res, next) {
-    res.status(404).sendFile("./views/404.html");
+    res.status(404).sendFile("./views/404.html", options);
 });
 
 app.listen(8080 || process.env.PORT, function(err) {
