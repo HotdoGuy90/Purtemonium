@@ -8,14 +8,12 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'views')));
 
 const options = {
-    root: path.join(__dirname)
+    root: path.join(__dirname, 'views')
 }
 
 app.get('/', function(req, res) {
     res.sendFile("./index.html", options);
 });
-
-app.use(express.static(path.join(__dirname, 'views')));
 
 app.get('/posting-rules', function(req, res) {
     res.sendFile("./posting-rules.html", options);
