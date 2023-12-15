@@ -28,9 +28,7 @@ app.get('/edit', function(req, res) {
 });
 
 app.get('/getPosts', function(req, res){
-    fs.readFile('./data.json', function(err, data) {
-        res.send(data);
-    });
+    res.sendFile('./data.json', options);
 });
 
 app.use(bodyParser.urlencoded({ extended: true}));
