@@ -63,7 +63,7 @@ app.post('/createPost', function(req, res) {
 
     res.redirect('../')
 
-    res.sendStatus(200);
+    res.status(200).send("OK");
     
 });
 
@@ -111,14 +111,14 @@ app.post('/deletePost', function(req, res) {
         });
     });
 
-    res.sendStatus(200);
+    res.status(200).send("OK");
 });
 
 app.post('/getIdInfo', function(req, res) {
     fs.readFile('./views/data.json', function(err, data) {
         data = JSON.parse(data);
         console.log(JSON.stringify(data.posts[req.body.id]))
-        res.end(JSON.stringify(data.posts[req.body.id]));
+        res.send(JSON.stringify(data.posts[req.body.id]));
     });
 });
 
