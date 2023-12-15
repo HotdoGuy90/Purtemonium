@@ -5,26 +5,26 @@ var app = express();
 var bodyParser = require('body-parser');
 const path = require('path');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 
 const options = {
     root: path.join(__dirname)
 }
 
 app.get('/', function(req, res) {
-    res.sendFile("./views/index.html", options);
+    res.sendFile("./index.html", options);
 });
 
 app.get('/posting-rules', function(req, res) {
-    res.sendFile("./views/posting-rules.html", options);
+    res.sendFile("./posting-rules.html", options);
 });
 
 app.get('/new', function(req, res) {
-    res.sendFile('./views/new.html', options);
+    res.sendFile('./new.html', options);
 });
 
 app.get('/edit', function(req, res) {
-    res.sendFile('./views/edit.html', options);
+    res.sendFile('./edit.html', options);
 });
 
 app.get('/getPosts', function(req, res){
