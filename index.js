@@ -49,10 +49,10 @@ app.post('/createPost', function(req, res) {
         paragraph: body
     }
 
-    fs.readFile('./data.json', function(err, data) {
+    fs.readFile('./views/data.json', function(err, data) {
         data = JSON.parse(data);
         data.posts.push(post);
-        fs.writeFile('./data.json', JSON.stringify(data), function(err) {
+        fs.writeFile('./views/data.json', JSON.stringify(data), function(err) {
             if (err) {
                 console.log(err);
             } else {
@@ -77,11 +77,11 @@ app.post('/editPost', function(req, res) {
     console.log(title);
     console.log(body);
 
-    fs.readFile('./data.json', function (err, data) {
+    fs.readFile('./views/data.json', function (err, data) {
         data = JSON.parse(data);
         data.posts[id].paragraph = body;
         data.posts[id].title = title;
-        fs.writeFile('./data.json', JSON.stringify(data), function(err) {
+        fs.writeFile('./views/data.json', JSON.stringify(data), function(err) {
             if (err) {
                 console.log(err);
             } else {
@@ -98,10 +98,10 @@ app.use(bodyParser.json())
 app.post('/deletePost', function(req, res) {
     var id = req.body.id;
 
-    fs.readFile('./data.json', function(err, data) {
+    fs.readFile('./views/data.json', function(err, data) {
         data = JSON.parse(data);
         data.posts.splice(id, 1);
-        fs.writeFile('./data.json', JSON.stringify(data), function(err) {
+        fs.writeFile('./views/data.json', JSON.stringify(data), function(err) {
             if (err) {
                 console.log(err);
             } else {
@@ -115,7 +115,7 @@ app.post('/deletePost', function(req, res) {
 });
 
 app.post('/getIdInfo', function(req, res) {
-    fs.readFile('./data.json', function(err, data) {
+    fs.readFile('./views/data.json', function(err, data) {
         data = JSON.parse(data);
         console.log(JSON.stringify(data.posts[req.body.id]))
         res.end(JSON.stringify(data.posts[req.body.id]));
