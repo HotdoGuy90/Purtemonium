@@ -73,7 +73,7 @@ app.post('/createPost', function(req, res) {
             owner: 'HotdoGuy90',
             repo: 'Purtemonium',
             path: 'data.json',
-            message: 'Post Was Created',
+            message: 'Post Was Deleted',
             committer: {
                 name: "HotdoGuy90",
                 email: "coopercjonesinfinity@gmail.com"
@@ -85,6 +85,8 @@ app.post('/createPost', function(req, res) {
             }
         }));
     });
+    console.log("Post Successfully Deleted.");
+    console.log("Post Id: " + id);
     res.status(200).redirect('../');
     
 });
