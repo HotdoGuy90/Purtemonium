@@ -4,6 +4,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 const path = require('path');
+var { Octokit } = require('@octokit/rest');
+var fetch = require('node-fetch-commonjs');
 
 app.use(express.static(path.join(__dirname, 'views')));
 
@@ -52,13 +54,36 @@ app.post('/createPost', function(req, res) {
     fs.readFile('./views/data.json', function(err, data) {
         data = JSON.parse(data);
         data.posts.push(post);
-        fs.writeFile('./views/data.json', JSON.stringify(data), function(err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("Posts Updated Successfully");
-            }
+
+        const octokit = new Octokit({
+            request: {
+                fetch: fetch
+            },
+            auth: process.env.GITHUB_PROFILE_KEY
         });
+
+        octokit.request('GET /repos/{owner}/{repo}/contents/views/{path}', {
+            owner: 'HotdoGuy90',
+            repo: 'Purtemonium',
+            path: 'data.json',
+            headers: {
+                'X-Github-Api-Version': '2022-11-28'
+            }
+        }).then(res => octokit.request('PUT /repos/{owner}/{repo}/contents/views/{path}', {
+            owner: 'HotdoGuy90',
+            repo: 'Purtemonium',
+            path: 'data.json',
+            message: 'Post Was Created',
+            committer: {
+                name: "HotdoGuy90",
+                email: "coopercjonesinfinity@gmail.com"
+            },
+            content: btoa(JSON.stringify(data)),
+            sha: res.data.sha,
+            headers: {
+                'X-Github-Api-Version': '2022-11-28'
+            }
+        }
     });
     res.status(200).redirect('../');
     
