@@ -125,6 +125,11 @@ app.post('/deletePost', function(req, res) {
     fs.readFile('./views/data.json', function(err, data) {
         data = JSON.parse(data);
         data.posts.splice(id, 1);
+        const octokit = new Octokit({
+            auth: process.env.GITHUB_PROFILE_KEY,
+            request: fetch
+        });
+        
         octokit.request('GET /repos/{owner}/{repo}/contents/views/{path}', {
             owner: 'HotdoGuy90',
             repo: 'Purtemonium',
