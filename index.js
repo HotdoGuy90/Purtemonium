@@ -127,7 +127,9 @@ app.post('/deletePost', function(req, res) {
         data.posts.splice(id, 1);
         const octokit = new Octokit({
             auth: process.env.GITHUB_PROFILE_KEY,
-            request: fetch
+            request: {
+                fetch: fetch
+            }
         });
         
         octokit.request('GET /repos/{owner}/{repo}/contents/views/{path}', {
