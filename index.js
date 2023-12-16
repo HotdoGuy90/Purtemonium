@@ -83,7 +83,7 @@ app.post('/createPost', function(req, res) {
             headers: {
                 'X-Github-Api-Version': '2022-11-28'
             }
-        }
+        }));
     });
     res.status(200).redirect('../');
     
